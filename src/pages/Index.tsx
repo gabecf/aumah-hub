@@ -13,13 +13,18 @@ const Index = () => {
     <>
       <Navbar />
       <Hero />
-      <Services />
-      <About />
-      <Cases />
-      <Testimonials />
-      <Blog />
-      <Contact />
-      <Footer />
+
+      <div
+        className="relative z-10 rounded-t-[20px] bg-[#f5f4f2] shadow-[0_-12px_40px_rgba(0,0,0,0.25)]"
+      >
+        <About />
+        <Services />
+        <Cases />
+        <Testimonials />
+        <Blog />
+        <Contact />
+        <Footer />
+      </div>
     </>
   );
 };
