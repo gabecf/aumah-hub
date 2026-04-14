@@ -49,6 +49,34 @@ export default function Contact() {
     };
   }, [showForm]);
 
+  const PORTAL_ID = '50988588';
+  const FORM_ID = 'da1ce031-a703-4b6d-b2b3-bd835d373abd';
+
+  const sendToHubspot = async (formData: typeof form) => {
+    const payload = {
+      fields: [
+        { name: 'firstname', value: formData.name },
+        { name: 'email', value: formData.email },
+        { name: 'phone', value: formData.whatsapp },
+        { name: 'message', value: formData.message },
+        { name: 'jobtitle', value: formData.budget },
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
+
+    await fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }
+    );
+  };
+
   const sharedItemClass =
     "flex w-full items-center justify-between border-b border-white/[0.08] px-0 py-5 transition-colors hover:bg-white/[0.03]";
 
@@ -135,7 +163,15 @@ export default function Contact() {
             {/* Form */}
             <form
               className="flex flex-col gap-5"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                try {
+                  await sendToHubspot(form);
+                } catch (err) {
+                  console.error('HubSpot error:', err);
+                }
+                setShowForm(false);
+              }}
             >
               <input
                 name="name"
