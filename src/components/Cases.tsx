@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -63,6 +63,7 @@ const cases = [
 export default function Cases() {
   const ref = useScrollReveal<HTMLElement>();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeCase, setActiveCase] = useState(0);
 
   const scrollBy = (dir: number) => {
     scrollRef.current?.scrollBy({ left: dir * 380, behavior: "smooth" });
@@ -74,8 +75,8 @@ export default function Cases() {
         {/* Header */}
         <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="reveal text-[clamp(28px,3.5vw,48px)] font-bold tracking-tight text-navy">
-              Cases
+            <h2 className="reveal text-[clamp(28px,3.5vw,48px)] font-bold tracking-tight text-navy text-balance">
+              Resultados que falam por si
             </h2>
             <p className="reveal mt-3 text-base text-navy/50 max-w-sm">
               Resultados reais de empresas que escolheram dados antes de opinião.
@@ -102,8 +103,13 @@ export default function Cases() {
         {/* Carousel */}
         <div
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto scroll-smooth pb-4 -mx-6 px-6 scrollbar-hide"
+          className="flex gap-5 overflow-x-auto scroll-smooth pb-4 scrollbar-hide"
           style={{ scrollSnapType: "x mandatory" }}
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const idx = Math.round(el.scrollLeft / 380);
+            setActiveCase(Math.min(idx, cases.length - 1));
+          }}
         >
           {cases.map((c) => (
             <article
@@ -136,6 +142,23 @@ export default function Cases() {
                 <p className="text-sm leading-relaxed text-navy/60">{c.description}</p>
               </div>
             </article>
+          ))}
+        </div>
+
+        {/* Dots mobile */}
+        <div className="flex justify-center gap-2 mt-5 md:hidden">
+          {cases.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                scrollRef.current?.scrollTo({ left: i * 380, behavior: "smooth" });
+                setActiveCase(i);
+              }}
+              className={`rounded-full transition-all duration-300 ${
+                i === activeCase ? "w-5 h-1.5 bg-navy" : "w-1.5 h-1.5 bg-navy/25"
+              }`}
+              aria-label={`Ver case ${i + 1}`}
+            />
           ))}
         </div>
       </div>

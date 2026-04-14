@@ -37,31 +37,35 @@ export default function About() {
             </h2>
 
             <p className="mt-5 max-w-lg text-base leading-relaxed text-navy/60">
-              A Aumah nasceu da convicção de que toda decisão de mídia
-              deveria ser respaldada por números, não por achismo.
-              ROI mensurável como norte — sem jargão de agência,
-              sem métricas de vaidade.
+              Sou o Gabriel. Fundador da Aumah e o profissional que vai
+              cuidar da sua operação — do primeiro diagnóstico ao resultado.
+              <br /><br />
+              Não terceirizo o que importa. Cada cliente tem acesso direto
+              a mim, com profundidade no negócio deles antes de qualquer
+              investimento em mídia. A Aumah foi pensada para entregar o que agências grandes não
+              conseguem: atenção real, resultados mensuráveis e uma operação
+              integrada entre mídia, presença digital e automação.
             </p>
 
             {/* Stats */}
-            <div className="mt-10 flex flex-wrap items-center gap-8">
+            <div className="mt-10 flex items-center gap-4 sm:gap-8">
               <div>
-                <p className="text-3xl font-bold text-navy">R$12M+</p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-navy/40">
+                <p className="text-2xl sm:text-3xl font-bold text-navy">R$12M+</p>
+                <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
                   em verba gerenciada
                 </p>
               </div>
-              <div className="hidden h-10 w-px bg-navy/15 sm:block" />
+              <div className="w-px h-8 bg-navy/15 flex-shrink-0" />
               <div>
-                <p className="text-3xl font-bold text-navy">3+</p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-navy/40">
+                <p className="text-2xl sm:text-3xl font-bold text-navy">3+</p>
+                <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
                   anos de operação
                 </p>
               </div>
-              <div className="hidden h-10 w-px bg-navy/15 sm:block" />
+              <div className="w-px h-8 bg-navy/15 flex-shrink-0" />
               <div>
-                <p className="text-3xl font-bold text-navy">23</p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-navy/40">
+                <p className="text-2xl sm:text-3xl font-bold text-navy">23</p>
+                <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
                   clientes ativos
                 </p>
               </div>

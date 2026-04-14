@@ -55,9 +55,6 @@ export default function Testimonials() {
         <h2 className="reveal text-[clamp(28px,3vw,44px)] font-extrabold text-text-dark-bg">
           O que nossos clientes dizem
         </h2>
-        <p className="reveal mt-4 max-w-xl text-base text-text-dark-bg/50">
-          Resultados reais de empresas que escolheram dados antes de opinião.
-        </p>
 
         {/* Mobile: carrossel animado */}
         <div className="mt-12 -mx-6 overflow-hidden px-6 md:hidden">

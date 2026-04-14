@@ -24,7 +24,7 @@ const inputClass =
 export default function Contact() {
   const ref = useScrollReveal<HTMLElement>();
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", budget: "" });
+  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", budget: "", message: "" });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -73,7 +73,7 @@ export default function Contact() {
                 Diagnóstico gratuito
               </span>
               <span className="text-sm text-text-dark-bg/40">
-                Preencha e entraremos em contato
+                Análise gratuita da sua operação atual
               </span>
             </div>
             <div className="flex-shrink-0 pr-2 text-text-dark-bg/30">
@@ -121,7 +121,7 @@ export default function Contact() {
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
               <span className="text-xs font-semibold uppercase tracking-widest text-text-dark-bg/40">
-                Diagnóstico gratuito
+                Qual é o seu desafio?
               </span>
               <button
                 onClick={() => setShowForm(false)}
@@ -152,6 +152,14 @@ export default function Contact() {
                 onChange={handleChange}
                 className={inputClass}
               />
+              <input
+                name="whatsapp"
+                type="tel"
+                placeholder="WhatsApp (com DDD)"
+                value={form.whatsapp}
+                onChange={handleChange}
+                className={inputClass}
+              />
               <select
                 name="budget"
                 value={form.budget}
@@ -159,12 +167,13 @@ export default function Contact() {
                 className={inputClass}
               >
                 <option value="" disabled>
-                  Budget mensal de mídia
+                  Qual serviço você precisa?
                 </option>
-                <option value="3-10k">R$ 3k – R$ 10k</option>
-                <option value="10-25k">R$ 10k – R$ 25k</option>
-                <option value="25-50k">R$ 25k – R$ 50k</option>
-                <option value="50k+">Acima de R$ 50k</option>
+                <option value="midia-paga">Mídia Paga (Google, Meta, LinkedIn)</option>
+                <option value="sites">Criação de Site ou Landing Page</option>
+                <option value="automacao">Automação e CRM</option>
+                <option value="consultoria">Consultoria Estratégica</option>
+                <option value="nao-sei">Ainda não sei — quero conversar</option>
               </select>
               <button
                 type="submit"

@@ -51,11 +51,18 @@ export default function Services() {
   }, []);
 
   useEffect(() => {
+    const isMobileDevice = window.innerWidth < 640;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
       },
-      { threshold: 0.6, rootMargin: "0px 0px -160px 0px" }
+      {
+        threshold: isMobileDevice ? 0.2 : 0.6,
+        rootMargin: isMobileDevice ? "0px 0px -40px 0px" : "0px 0px -160px 0px",
+      }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -74,18 +81,12 @@ export default function Services() {
       <div className="mx-auto max-w-6xl px-6">
 
         {/* Header */}
-        <div
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(12px)",
-            transition: "opacity 600ms ease, transform 600ms ease",
-          }}
-        >
+        <div className="reveal">
           <h2 className="text-[clamp(28px,3.5vw,48px)] font-semibold tracking-tight text-text-dark-bg">
             O que fazemos
           </h2>
           <p className="mt-4 max-w-lg text-base text-text-dark-bg/50">
-            Estratégia, execução e tecnologia para crescimento digital mensurável.
+            Três frentes. Um especialista. Sem terceirizar o que importa.
           </p>
         </div>
 
@@ -94,30 +95,31 @@ export default function Services() {
           {[
             {
               title: "Mídia Paga",
-              desc: "Google Ads, Meta Ads e LinkedIn Ads com foco em ROI mensurável.",
+              desc: "Para quem quer crescer com consistência e acelerar resultados.",
               href: "/midia-paga",
             },
             {
               title: "Sites",
-              desc: "Landing pages e sites institucionais focados em conversão.",
+              desc: "Para quem quer ser encontrado e converter visitante em cliente.",
               href: "/sites",
             },
             {
               title: "Automação",
-              desc: "CRM, fluxos e integrações para escalar sem aumentar equipe.",
+              desc: "Para quem valoriza tempo e quer escalar o atendimento sem perder qualidade.",
               href: "/automacao",
             },
-          ].map((s) => (
+          ].map((s, index) => (
             <a
               key={s.href}
               href={s.href}
-              className="group flex flex-col justify-between rounded-xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:border-purple/40 hover:bg-white/[0.07]"
+              className="reveal group flex flex-col justify-between rounded-xl border border-white/15 bg-white/[0.08] p-6 transition-all duration-300 hover:border-white/40 hover:bg-white/[0.12] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+              style={{ transitionDelay: `${index * 100 + 150}ms` }}
             >
               <div>
                 <h3 className="text-base font-semibold text-text-dark-bg">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-dark-bg/50">{s.desc}</p>
               </div>
-              <div className="mt-6 flex items-center gap-1.5 text-xs font-medium text-purple/60 transition-colors group-hover:text-purple">
+              <div className="mt-6 flex items-center gap-1.5 text-xs font-medium text-white/60 transition-colors group-hover:text-white">
                 Saiba mais
                 <ArrowUpRight size={12} />
               </div>
@@ -128,7 +130,7 @@ export default function Services() {
         {/* Separador + carrossel */}
         <div className="mt-16 border-t border-white/[0.08] pt-12">
           <p className="text-xs font-semibold tracking-widest text-text-dark-bg/25 uppercase mb-10">
-            Ferramentas que utilizamos
+            Ferramentas que dominamos
           </p>
 
         {/* Carrossel */}
@@ -149,7 +151,7 @@ export default function Services() {
           {/* Ícones — container com altura fixa */}
           <div
             className="relative flex flex-1 items-center justify-center"
-            style={{ height: "140px" }}
+            style={{ height: "120px", isolation: "isolate" }}
           >
             {tools.map((tool, i) => {
               const pos = getPos(i);
@@ -160,7 +162,7 @@ export default function Services() {
               const isAdjacent = Math.abs(pos) === 1;
               const isEdge     = Math.abs(pos) === 2;
 
-              const xOffset = pos * (isMobile ? 78 : 95);
+              const xOffset = pos * (isMobile ? 63 : 95);
 
               return (
                 <div
@@ -181,23 +183,24 @@ export default function Services() {
                       opacity: isEdge ? 0.6 : 1,
                       filter: isEdge ? "blur(1px)" : "none",
                       transition: "transform 600ms cubic-bezier(0.4,0,0.2,1), opacity 600ms cubic-bezier(0.4,0,0.2,1), filter 600ms cubic-bezier(0.4,0,0.2,1)",
-                      zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
+                      zIndex: isCenter ? (isMobile ? 5 : 10) : isAdjacent ? (isMobile ? 3 : 5) : 1,
+                      pointerEvents: Math.abs(pos) > 1 ? "none" : "auto",
                     }}
                   >
                     <div className={`flex items-center justify-center rounded-full transition-all duration-[600ms] ${
                       isCenter
-                        ? "h-20 w-20 sm:h-24 sm:w-24 bg-white/[0.10] ring-1 ring-white/20 shadow-[0_0_24px_rgba(100,0,223,0.15),0_8px_24px_rgba(0,0,0,0.4)]"
+                        ? "h-16 w-16 bg-white/[0.07] ring-1 ring-white/[0.12] shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
                         : isAdjacent
-                        ? "h-12 w-12 sm:h-[60px] sm:w-[60px] bg-white/[0.06] ring-1 ring-white/10"
-                        : "h-9 w-9 sm:h-10 sm:w-10 bg-white/[0.03] ring-1 ring-white/[0.06]"
+                        ? "h-12 w-12 bg-white/[0.06] ring-1 ring-white/10"
+                        : "h-8 w-8 bg-white/[0.03] ring-1 ring-white/[0.06]"
                     }`}>
                       <img
                         src={tool.icon}
                         alt={tool.name}
                         className={`invert transition-all duration-[600ms] ${
-                          isCenter ? "h-8 w-8 sm:h-10 sm:w-10 opacity-90"
-                          : isAdjacent ? "h-5 w-5 sm:h-6 sm:w-6 opacity-[0.42]"
-                          : "h-4 w-4 sm:h-[18px] sm:w-[18px] opacity-[0.18]"
+                          isCenter ? "h-7 w-7 opacity-75"
+                          : isAdjacent ? "h-5 w-5 opacity-[0.42]"
+                          : "h-3.5 w-3.5 opacity-[0.18]"
                         }`}
                       />
                     </div>

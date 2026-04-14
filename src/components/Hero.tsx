@@ -25,7 +25,8 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-20 lg:pt-28 lg:pb-32">
         <h1 className="reveal max-w-5xl tracking-tight text-[clamp(36px,5.5vw,72px)] font-bold leading-[1.05] text-text-dark-bg">
-          Seu budget de mídia trabalhando no limite.
+          Uma operação completa de performance.<br />
+          Com profundidade real no seu negócio.
         </h1>
 
         <div className="reveal mt-8 grid grid-cols-1 items-end gap-8 lg:grid-cols-2">
@@ -33,14 +34,14 @@ export default function Hero() {
           {/* Coluna esquerda: subtítulo + botão */}
           <div>
             <p className="max-w-sm text-base leading-relaxed text-text-dark-bg/55">
-              Gerenciamos Google Ads, LinkedIn e Meta para empresas que medem resultado em receita — não em cliques.
+              Mídia paga, sites e automação integrados em uma operação única — gerenciada por quem vai conhecer o seu negócio de verdade.
             </p>
             <a
               href="#contato"
               className="group mt-8 inline-flex w-fit items-center gap-3 text-sm font-medium text-text-dark-bg/80 transition-all duration-300 hover:text-text-dark-bg"
             >
               <span className="relative overflow-hidden rounded-full border border-orange/60 px-5 py-2.5 transition-all duration-300 group-hover:border-orange group-hover:bg-orange/10">
-                Falar com um especialista
+                Conte seu desafio →
               </span>
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-all duration-500 group-hover:translate-x-1 group-hover:border-orange group-hover:bg-orange/10">
                 <ArrowRight size={14} className="text-white/50 transition-colors group-hover:text-orange" />
