@@ -59,7 +59,7 @@ export default function Footer() {
               © 2025 Aumah Hub. Todos os direitos reservados.
             </p>
             <p className="text-xs text-text-dark-bg/40">
-              CNPJ 00.000.000/0001-00 · Campinas, SP — Brasil
+              CNPJ 61.111.283/0001-33 · Americana, SP — Brasil
             </p>
           </div>
 

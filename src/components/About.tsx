@@ -50,23 +50,23 @@ export default function About() {
             {/* Stats */}
             <div className="mt-10 flex items-center gap-4 sm:gap-8">
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-navy">R$12M+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-navy">R$1M+</p>
                 <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
                   em verba gerenciada
                 </p>
               </div>
               <div className="w-px h-8 bg-navy/15 flex-shrink-0" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-navy">3+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-navy">5+</p>
                 <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
                   anos de operação
                 </p>
               </div>
               <div className="w-px h-8 bg-navy/15 flex-shrink-0" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-navy">23</p>
+                <p className="text-2xl sm:text-3xl font-bold text-navy">20+</p>
                 <p className="mt-0.5 text-[10px] sm:text-xs text-navy/40 uppercase tracking-wide leading-tight">
-                  clientes ativos
+                  clientes confiaram
                 </p>
               </div>
             </div>
