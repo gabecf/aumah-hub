@@ -19,8 +19,9 @@ export default function Hero() {
         src="/icon-a.webp"
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="pointer-events-none absolute z-0 right-[5%] top-1/2 -translate-y-1/2 -rotate-[8deg] opacity-[0.08]"
-        style={{ width: 480, height: "auto" }}
+        style={{ width: 480, height: 480 }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-20 lg:pt-28 lg:pb-32">
